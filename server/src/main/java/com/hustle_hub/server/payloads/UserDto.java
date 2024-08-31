@@ -1,2 +1,4 @@
-package com.hustle_hub.server.payloads;public class UserDto {
+package com.hustle_hub.server.payloads;
+
+public class UserDto {
 }

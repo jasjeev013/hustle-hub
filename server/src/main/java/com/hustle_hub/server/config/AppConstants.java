@@ -1,2 +1,4 @@
-package com.hustle_hub.server.config;public class AppConstants {
+package com.hustle_hub.server.config;
+
+public class AppConstants {
 }
