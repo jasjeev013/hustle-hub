@@ -1,23 +1,29 @@
 package com.hustle_hub.server.services.impl;
 
 import com.hustle_hub.server.exceptions.ResourceNotFoundException;
+import com.hustle_hub.server.models.Profile;
 import com.hustle_hub.server.models.User;
 import com.hustle_hub.server.payloads.ApiResponseObject;
 import com.hustle_hub.server.payloads.UserDto;
+import com.hustle_hub.server.repositories.ProfileRepository;
 import com.hustle_hub.server.repositories.UserRepository;
 import com.hustle_hub.server.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class UserServiceImpl implements UserService {
 
 
     private UserRepository userRepository;
+    private ProfileRepository profileRepository;
     private ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+
+    public UserServiceImpl(UserRepository userRepository, ProfileRepository profileRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.profileRepository = profileRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -53,6 +59,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public ApiResponseObject deleteUser(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User", "id", userId));
+        Profile profile = user.getProfile();
+        user.setProfile(null);
+        profileRepository.delete(profile);
         userRepository.delete(user);
         return new ApiResponseObject("User Deleted Successfully",true,null);
     }
