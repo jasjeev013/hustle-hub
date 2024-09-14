@@ -33,9 +33,7 @@ public class TaskServiceImpl implements TaskService{
     public ApiResponseObject createTask(Long userId,TaskDto taskDto) {
         User user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User", "id", userId));
         Task task = modelMapper.map(taskDto,Task.class);
-        user.getTasks().add(task);
         task.setUser(user);
-        userRepository.save(user);
         Task savedTask = taskRepository.save(task);
         return new ApiResponseObject("Task Created Successfully",true,modelMapper.map(savedTask,TaskDto.class));
     }
@@ -49,6 +47,7 @@ public class TaskServiceImpl implements TaskService{
             task.setStatus(taskDto.getStatus());
             task.setDescription(taskDto.getDescription());
             task.setPriority(taskDto.getPriority());
+            task.setCategories(taskDto.getCategories());
             Task updatedTask = taskRepository.save(task);
             return new ApiResponseObject("Task Updated Successfully",true,modelMapper.map(updatedTask,TaskDto.class));
         }
@@ -76,7 +75,7 @@ public class TaskServiceImpl implements TaskService{
         User user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User", "id", userId));
         Task task = taskRepository.findById(taskId).orElseThrow(()-> new ResourceNotFoundException("Task", "id", taskId));
         if (task.getUser().getId() == userId){
-            user.setTasks(user.getTasks().stream().filter(task1 -> task1.getId()!=taskId).collect(Collectors.toList()));
+//            user.setTasks(user.getTasks().stream().filter(task1 -> task1.getId()!=taskId).collect(Collectors.toList()));
             taskRepository.deleteById(taskId);
 
             return new ApiResponseObject("Task Deleted Successfully",true,null);

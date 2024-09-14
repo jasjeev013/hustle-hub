@@ -1,0 +1,46 @@
+/* Container styling */
+.cards-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 100px 0;
+}
+
+/* Basic styling for each card */
+.big-card {
+  width: 30%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 1;  /* Cards should always be fully visible */
+  transform: translateY(0); /* Make sure they start in place */
+  transition: all 0.5s ease; /* Smooth transition on hover and animations */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Image styling */
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Animation when hovered (only 1% bigger) */
+.big-card:hover {
+  transform: scale(1.07);  /* 1% increase */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover transition for image zoom */
+.big-card:hover .card-img {
+  transform: scale(1.02); /* 1% increase for the image as well */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ensuring the card opacity doesn't change on hover */
+.big-card:hover {
+  opacity: 1; /* Ensure opacity remains at 1 */
+}

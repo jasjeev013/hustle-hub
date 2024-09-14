@@ -1,0 +1,40 @@
+/* Container styling */
+.cards-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 100px 0;
+}
+
+/* Basic styling for each card */
+.big-card {
+  width: 30%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Start position for animation */
+  transition: all 0.5s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Image styling */
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Animation when hovered */
+.big-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover transition for image zoom */
+.big-card:hover .card-img {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
