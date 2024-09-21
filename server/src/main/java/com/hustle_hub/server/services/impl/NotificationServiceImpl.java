@@ -2,7 +2,6 @@ package com.hustle_hub.server.services.impl;
 
 import com.hustle_hub.server.exceptions.ResourceNotFoundException;
 import com.hustle_hub.server.models.Notification;
-import com.hustle_hub.server.models.Profile;
 import com.hustle_hub.server.models.Task;
 import com.hustle_hub.server.models.User;
 import com.hustle_hub.server.payloads.ApiResponseData;

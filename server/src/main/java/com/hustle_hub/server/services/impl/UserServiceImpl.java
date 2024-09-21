@@ -9,6 +9,7 @@ import com.hustle_hub.server.repositories.ProfileRepository;
 import com.hustle_hub.server.repositories.UserRepository;
 import com.hustle_hub.server.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -19,17 +20,21 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private ProfileRepository profileRepository;
     private ModelMapper modelMapper;
+    private PasswordEncoder passwordEncoder;
 
 
-    public UserServiceImpl(UserRepository userRepository, ProfileRepository profileRepository, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, ProfileRepository profileRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public ApiResponseObject createUser(UserDto userDto) {
         User newUser = modelMapper.map(userDto,User.class);
+        String hashPassword = passwordEncoder.encode(newUser.getPassword());
+        newUser.setPassword(hashPassword);
         User savedUser = userRepository.save(newUser);
         return new ApiResponseObject("User Created Successfully",true,modelMapper.map(savedUser,UserDto.class));
     }

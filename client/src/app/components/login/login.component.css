@@ -1,0 +1,55 @@
+/* Centering the login form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+  }
+  
+  .text-heading{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 60px;
+  }
+
+  /* Styling the box containing the form */
+  .login-box {
+    width: 400px;
+    padding: 20px;
+    margin-bottom: 150px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form input styles */
+  .login-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Input animation on focus */
+  .login-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    border-color: #007bff;
+  }
+  
+  /* Submit button hover effect */
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover animation for the submit button */
+  .submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  }
+  

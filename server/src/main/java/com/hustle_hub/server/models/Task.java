@@ -22,14 +22,9 @@ public class Task {
     private String priority;
     private String status;
 
-    @ElementCollection
-    @CollectionTable(name = "task_categories", joinColumns = @JoinColumn(name = "task_id"))
-    @Column(name = "category")
-    private List<String> categories = new ArrayList<>();
-
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @OneToMany(mappedBy = "task",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Notification> notifcations = new ArrayList<>();

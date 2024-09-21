@@ -16,29 +16,29 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping("/create/{userId}")
-    public ApiResponseObject createTask(@PathVariable Long userId, @RequestBody TaskDto taskDto){
-        return taskService.createTask(userId,taskDto);
+    @PostMapping("/create/{categoryId}")
+    public ApiResponseObject createTask(@PathVariable Long categoryId, @RequestBody TaskDto taskDto){
+        return taskService.createTask(categoryId,taskDto);
     }
 
-    @PutMapping("/update/{userId}/{taskId}")
-    public ApiResponseObject updateTask(@PathVariable Long userId,@PathVariable Long taskId,@RequestBody TaskDto taskDto){
-        return taskService.updateTask(userId,taskId,taskDto);
+    @PutMapping("/update/{categoryId}/{taskId}")
+    public ApiResponseObject updateTask(@PathVariable Long categoryId,@PathVariable Long taskId,@RequestBody TaskDto taskDto){
+        return taskService.updateTask(categoryId,taskId,taskDto);
     }
 
-    @GetMapping("/get/{userId}/{taskId}")
-    public ApiResponseObject getTask(@PathVariable Long userId,@PathVariable Long taskId){
-        return taskService.getTask(userId,taskId);
+    @GetMapping("/get/{categoryId}/{taskId}")
+    public ApiResponseObject getTask(@PathVariable Long categoryId,@PathVariable Long taskId){
+        return taskService.getTask(categoryId,taskId);
     }
 
-    @GetMapping("/all/{userId}")
-    public ApiResponseData getTasksForSpecificUser(@PathVariable Long userId){
-        return taskService.getTasksForSpecificUser(userId);
+    @GetMapping("/all/{categoryId}")
+    public ApiResponseData getTasksForSpecificUser(@PathVariable Long categoryId){
+        return taskService.getTasksForSpecificUser(categoryId);
     }
 
-    @DeleteMapping("/delete/{userId}/{taskId}")
-    public ApiResponseObject deleteTask(@PathVariable Long userId,@PathVariable Long taskId){
-        return taskService.deleteTask(userId, taskId);
+    @DeleteMapping("/delete/{categoryId}/{taskId}")
+    public ApiResponseObject deleteTask(@PathVariable Long categoryId,@PathVariable Long taskId){
+        return taskService.deleteTask(categoryId, taskId);
     }
 
 }

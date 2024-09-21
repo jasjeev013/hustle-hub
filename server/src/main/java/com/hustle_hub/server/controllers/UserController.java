@@ -34,4 +34,5 @@ public class UserController {
     public ApiResponseObject deleteUser(@PathVariable Long userId){
         return userService.deleteUser(userId);
     }
+
 }

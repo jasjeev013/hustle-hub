@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TaskService {
 
-    ApiResponseObject createTask(Long userId,TaskDto taskDto);
-    ApiResponseObject updateTask(Long userId ,Long taskId, TaskDto taskDto);
-    ApiResponseObject getTask(Long userId ,Long taskId);
-    ApiResponseData getTasksForSpecificUser(Long userId);
-    ApiResponseObject deleteTask(Long userId,Long taskId);
+    ApiResponseObject createTask(Long categoryId,TaskDto taskDto);
+    ApiResponseObject updateTask(Long categoryId ,Long taskId, TaskDto taskDto);
+    ApiResponseObject getTask(Long categoryId ,Long taskId);
+    ApiResponseData getTasksForSpecificUser(Long categoryId);
+    ApiResponseObject deleteTask(Long categoryId,Long taskId);
 
 
 }
