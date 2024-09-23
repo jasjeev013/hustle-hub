@@ -1,1 +1,36 @@
-<p>dashboard works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar bg-light">
+        <button class="btn btn-primary w-100 my-2">Create</button>
+        <ul class="list-group">
+          <li class="list-group-item active">All Tasks</li>
+          <li class="list-group-item" *ngFor="let cat of categories">{{cat}}</li>
+        </ul>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="col-md-10 main-content">
+        <div class="row">
+          <!-- College Tasks -->
+          <div class="col-md-3 card mx-5" *ngFor="let category of CatWithTasks">
+            <div class="card-header">
+              <h5>{{category.name}}</h5>
+              <a href="#" class="text-primary">Add a task</a>
+            </div>
+            <ul class="list-group list-group-flush" >
+              <li class="list-group-item" *ngFor="let task of category.tasks" >
+                <div> 
+                    <h5>{{task.title}}</h5> 
+                    <p class="mx-2 paraG" >➤ {{task.description}}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+  
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  
