@@ -13,6 +13,10 @@ public class CategoryController {
 
     private CategoryService categoryService;
 
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
     @PostMapping("/create/{userId}")
     public ApiResponseObject createCategory(@PathVariable Long userId, @RequestBody CategoryDto categoryDto){
         return categoryService.createCategory(userId,categoryDto);

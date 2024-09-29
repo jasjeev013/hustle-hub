@@ -1,30 +1,68 @@
-export class Category {
-    name: String;
-    tasks: Array<{
-        taskId: Number,
-        title: String,
-        description: String,
-        dueDate: Date,
-        priority: String,
-        status: String
-    }>;
+export interface Task {
+    id: number;
+    title: string;
+    description: string;
+    due_date: Date; // You can keep this as Date if you handle parsing appropriately
+    priority: string;
+    status: string;
+    categories: Array<any>; // Adjust the type based on what you expect for categories
+}
 
-    constructor() {
-        this.name = '';
-        this.tasks = [];
-    }
+export interface Category {
+    id: number;
+    name: string;
+    color: string;
+    tasks: Task[]; // Use the Task interface here
 }
 
 export class LoginDetails{
-    email: String;
+    username: String;
     password: String;
 
     constructor() {
-        this.email = '';
+        this.username = '';
         this.password = '';
     }
 }
+
+export class UserRegisterDetails{
+    username: String;
+    password: String;
+    email: String;
+
+    constructor() {
+        this.username = '';
+        this.password = '';
+        this.email = '';
+    }
+}
+
+export class ProfileRegisterDetails{
+    firstName: String;
+    lastName: String;
+    profileImageURL: String;
+    bio: String;
+
+    constructor() {
+        this.firstName = '';
+        this.lastName = '';
+        this.profileImageURL = '';
+        this.bio = '';
+    }
+}
+
 export interface LoginResponse{
-    status:String
-    jwtToken:String
+    status:string
+    jwtToken:string
+}
+
+export interface ApiResponseObject {
+    message:String,
+    result:Boolean,
+    object:any
+}
+export interface ApiResponseData {
+    message:String,
+    result:Boolean,
+    data: Array<any>
 }

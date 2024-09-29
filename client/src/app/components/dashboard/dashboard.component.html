@@ -1,16 +1,16 @@
 <div class="container-fluid">
     <div class="row">
       <!-- Sidebar -->
-      <div class="col-md-2 sidebar bg-light">
+      <div *ngIf="CatWithTasks.length>0" class="col-md-2 sidebar bg-light">
         <button class="btn btn-primary w-100 my-2">Create</button>
         <ul class="list-group">
           <li class="list-group-item active">All Tasks</li>
-          <li class="list-group-item" *ngFor="let cat of categories">{{cat}}</li>
+          <li class="list-group-item" *ngFor="let cat of CatWithTasks">{{cat.name}}</li>
         </ul>
       </div>
   
       <!-- Main Content -->
-      <div class="col-md-10 main-content">
+      <div *ngIf="CatWithTasks.length>0" class="col-md-10 main-content">
         <div class="row">
           <!-- College Tasks -->
           <div class="col-md-3 card mx-5" *ngFor="let category of CatWithTasks">

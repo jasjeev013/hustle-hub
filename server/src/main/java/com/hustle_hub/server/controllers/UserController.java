@@ -20,6 +20,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.crypto.SecretKey;
@@ -36,14 +37,16 @@ public class UserController {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
     private AuthenticationManager authenticationManager;
+    private PasswordEncoder passwordEncoder;
     private final Environment env;
 
     @Autowired
-    public UserController(UserService userService, UserRepository userRepository, ModelMapper modelMapper, AuthenticationManager authenticationManager, Environment env) {
+    public UserController(UserService userService, UserRepository userRepository, ModelMapper modelMapper, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, Environment env) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.authenticationManager = authenticationManager;
+        this.passwordEncoder = passwordEncoder;
         this.env = env;
     }
 
@@ -60,6 +63,11 @@ public class UserController {
     @GetMapping("/get/{userId}")
     public ApiResponseObject getUser(@PathVariable Long userId){
         return userService.getUserById(userId);
+    }
+
+    @GetMapping("/get/email/{emailId}")
+    public ApiResponseObject getUser(@PathVariable String emailId){
+        return userService.getUserByEmail(emailId);
     }
 
     @DeleteMapping("/delete/{userId}")
@@ -79,22 +87,29 @@ public class UserController {
     @PostMapping("/apiLogin")
     public ResponseEntity<LoginResponseDto> apiLogin(@RequestBody LoginRequestDto loginRequest){
         String jwt = "";
+
         Authentication authentication  = UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.username(),loginRequest.password());
+
         Authentication authenticationResponse =  authenticationManager.authenticate(authentication);
+        System.out.println(authenticationResponse);
+        System.out.println(null!=authenticationResponse && authenticationResponse.isAuthenticated());
         if (null!=authenticationResponse && authenticationResponse.isAuthenticated()){
             if (null!=env){
                 String secret = env.getProperty(AppConstants.JWT_SECRET,AppConstants.JWT_SECRET_DEFAULT_VALUE);
                 SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
-                jwt = Jwts.builder().issuer("Eazy Bank").subject("JWT Token")
-                        .claim("username",authentication.getName())
-                        .claim("password",authentication.getAuthorities().stream().map(
+                jwt = Jwts.builder().issuer("Hustle Hub").subject("JWT Token")
+                        .claim("username",authenticationResponse.getName())
+                        .claim("authorities",authenticationResponse.getAuthorities().stream().map(
                                 GrantedAuthority::getAuthority).collect(Collectors.joining(",")))
                         .issuedAt(new Date())
                         .expiration(new Date((new Date()).getTime()+30000000))
                         .signWith(secretKey).compact();
 
+
+
             }
         }
+
         return ResponseEntity.status(HttpStatus.OK).header(AppConstants.JWT_HEADER,jwt)
                 .body(new LoginResponseDto(HttpStatus.OK.getReasonPhrase(),jwt)) ;
     }

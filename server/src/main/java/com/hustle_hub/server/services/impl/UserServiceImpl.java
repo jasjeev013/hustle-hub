@@ -9,6 +9,7 @@ import com.hustle_hub.server.repositories.ProfileRepository;
 import com.hustle_hub.server.repositories.UserRepository;
 import com.hustle_hub.server.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
     private ModelMapper modelMapper;
     private PasswordEncoder passwordEncoder;
 
-
+    @Autowired
     public UserServiceImpl(UserRepository userRepository, ProfileRepository profileRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
@@ -69,5 +70,12 @@ public class UserServiceImpl implements UserService {
         profileRepository.delete(profile);
         userRepository.delete(user);
         return new ApiResponseObject("User Deleted Successfully",true,null);
+    }
+
+    @Override
+    public ApiResponseObject getUserByEmail(String emailId) {
+        User user = userRepository.findByEmail(emailId).orElseThrow(()-> new ResourceNotFoundException("Email", "id", -1));
+
+        return new ApiResponseObject("Object Found Successfully",true,modelMapper.map(user,UserDto.class));
     }
 }

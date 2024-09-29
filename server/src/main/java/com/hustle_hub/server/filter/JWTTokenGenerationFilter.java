@@ -21,25 +21,29 @@ import java.util.stream.Collectors;
 
 public class JWTTokenGenerationFilter extends OncePerRequestFilter {
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        Authentication authentication =   SecurityContextHolder.getContext().getAuthentication();
-        if (null!=authentication){
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (null != authentication) {
             Environment env = getEnvironment();
-            if (null!=env){
-                String secret = env.getProperty(AppConstants.JWT_SECRET,AppConstants.JWT_SECRET_DEFAULT_VALUE);
+            if (null != env) {
+                String secret = env.getProperty(AppConstants.JWT_SECRET,
+                        AppConstants.JWT_SECRET_DEFAULT_VALUE);
                 SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
-                String jwt = Jwts.builder().issuer("Eazy Bank").subject("JWT Token")
-                        .claim("username",authentication.getName())
-                        .claim("password",authentication.getAuthorities().stream().map(
+                String jwt = Jwts.builder().issuer("Hustle Hub").subject("JWT Token")
+                        .claim("username", authentication.getName())
+                        .claim("authorities", authentication.getAuthorities().stream().map(
                                 GrantedAuthority::getAuthority).collect(Collectors.joining(",")))
                         .issuedAt(new Date())
-                        .expiration(new Date((new Date()).getTime()+30000000))
+                        .expiration(new Date((new Date()).getTime() + 30000000))
                         .signWith(secretKey).compact();
-                System.out.println(jwt);
-                response.setHeader(AppConstants.JWT_HEADER,jwt);
+                System.out.println("----------------------------------------------");
+                System.out.println(authentication.getAuthorities().stream().map(
+                        GrantedAuthority::getAuthority).collect(Collectors.joining(",")));
+                response.setHeader(AppConstants.JWT_HEADER, jwt);
             }
         }
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
 
     @Override

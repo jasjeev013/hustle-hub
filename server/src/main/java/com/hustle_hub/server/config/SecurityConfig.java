@@ -1,5 +1,6 @@
 package com.hustle_hub.server.config;
 
+import com.hustle_hub.server.exceptions.CustomBasicAuthenticationEntryPoint;
 import com.hustle_hub.server.filter.CsrfCookieFilter;
 import com.hustle_hub.server.filter.JWTTokenGenerationFilter;
 import com.hustle_hub.server.filter.JWTTokenValidationFilter;
@@ -22,8 +23,8 @@ import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -39,16 +40,22 @@ public class SecurityConfig {
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                         CorsConfiguration config = new CorsConfiguration();
                         config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
-                        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+                        config.setAllowedMethods(Collections.singletonList("*"));
                         config.setAllowCredentials(true);
-                        config.setAllowedHeaders(List.of("*"));
+                        config.setAllowedHeaders(Collections.singletonList("*"));
+                        config.setExposedHeaders(Arrays.asList("Authorization"));
                         config.setMaxAge(3600L);
                         return config;
                     }
                 }))
 
+
+//                .csrf(csrfConfig -> csrfConfig.csrfTokenRequestHandler(csrfTokenRequestAttributeHandler)
+//                        .ignoringRequestMatchers("/swagger-ui/**", "/v3/api-docs/**","/api/user/create","/api/user/apiLogin")
+//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+
                 .csrf(csrfConfig -> csrfConfig.csrfTokenRequestHandler(csrfTokenRequestAttributeHandler)
-                        .ignoringRequestMatchers("/swagger-ui/**", "/v3/api-docs/**","/api/user/create","/api/user/apiLogin")
+                        .ignoringRequestMatchers( "/swagger-ui/**", "/v3/api-docs/**","/api/user/create","/api/user/apiLogin")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
 
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
@@ -59,7 +66,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/**").hasAuthority("USER")
         );
         http.formLogin(Customizer.withDefaults());
-        http.httpBasic(Customizer.withDefaults());
+        http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
         return http.build();
     }
 

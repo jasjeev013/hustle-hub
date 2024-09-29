@@ -1,6 +1,5 @@
 package com.hustle_hub.server.services;
 
-import com.hustle_hub.server.payloads.ApiResponseData;
 import com.hustle_hub.server.payloads.ApiResponseObject;
 import com.hustle_hub.server.payloads.UserDto;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,8 @@ public interface UserService {
 
     ApiResponseObject getUserById(Long userId);
     ApiResponseObject deleteUser(Long userId);
+
+    ApiResponseObject getUserByEmail(String emailId);
 
 
 

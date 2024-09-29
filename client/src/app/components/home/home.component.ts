@@ -1,4 +1,5 @@
-import { Component,AfterViewInit  } from '@angular/core';
+import { Component,AfterViewInit, OnInit, inject  } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
 declare var bootstrap: any;
 
 @Component({
@@ -7,11 +8,17 @@ declare var bootstrap: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements AfterViewInit {
+
+
+
+
   ngAfterViewInit(): void {
     const myCarouselElement = document.querySelector('#carouselExampleCaptions');
     const carousel = new bootstrap.Carousel(myCarouselElement, {
-      interval: 3000,  // Time between automatic transitions (optional)
+      interval: 2000,  // Time between automatic transitions (optional)
       ride: 'carousel'
     });
   }
+
+  
 }

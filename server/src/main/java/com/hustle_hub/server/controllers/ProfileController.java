@@ -3,7 +3,6 @@ package com.hustle_hub.server.controllers;
 import com.hustle_hub.server.payloads.ApiResponseObject;
 import com.hustle_hub.server.payloads.ProfileDto;
 import com.hustle_hub.server.services.ProfileService;
-import com.hustle_hub.server.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

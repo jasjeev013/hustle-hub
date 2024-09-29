@@ -12,14 +12,20 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="isLoggedIn" class="nav-item">
             <a class="nav-link" href="/dashboard">Dashboard</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="!isLoggedIn" class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="!isLoggedIn" class="nav-item">
             <a class="nav-link" href="/register">Register</a>
+          </li>
+          <li *ngIf="isLoggedIn" class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+          <li *ngIf="isLoggedIn" class="nav-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="40px" height="40px" alt="User Photo" />
           </li>
         </ul>
       </div>

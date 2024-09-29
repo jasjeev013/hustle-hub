@@ -2,32 +2,20 @@
     <div class="login-box">
       <h2 class="text-center text-heading">REGISTER</h2>
       <form>
-        <div class="form-group">
-          <label for="username">First Name</label>
-          <input type="text" id="firstName" class="form-control login-input" placeholder="Enter your username" />
-        </div>
-        <div class="form-group">
-          <label for="username">Last Name</label>
-          <input type="text" id="lastName" class="form-control login-input" placeholder="Enter your username" />
-        </div>
-        <div class="form-group">
+        <div class="form-group mt-3"> 
           <label for="username">Username</label>
-          <input type="text" id="username" class="form-control login-input" placeholder="Enter your username" />
+          <input type="text" id="username" name="username" class="form-control login-input" placeholder="Enter your username" [(ngModel)]="userRegisterDetails.username" />
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label for="username">Email</label>
-          <input type="email" id="email" class="form-control login-input" placeholder="Enter your username" />
+          <input type="email" id="email" name="email" class="form-control login-input" placeholder="Enter your Email" [(ngModel)]="userRegisterDetails.email"/>
         </div>
         <div class="form-group mt-3">
           <label for="password">Password</label>
-          <input type="password" id="password" class="form-control login-input" placeholder="Enter your password" />
-        </div>
-        <div class="form-group mt-3">
-          <label for="password">Bio</label>
-          <input type="password" id="password" class="form-control login-input" placeholder="Enter your password" />
+          <input type="password" id="password" name="password" class="form-control login-input" placeholder="Enter your password" [(ngModel)]="userRegisterDetails.password" />
         </div>
         <div class="text-center mt-4">
-          <button type="submit" class="btn btn-primary submit-btn">Register</button>
+          <button type="submit" class="btn btn-primary submit-btn" (click)="register()">Register</button>
         </div>
       </form>
     </div>
