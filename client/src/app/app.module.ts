@@ -13,6 +13,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { authReducer } from './auth/auth.reducer';
+import { MetaReducer, StoreModule } from '@ngrx/store';
+import { localStorageSyncReducer } from './auth/local-storage.metareducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+ 
+export const metaReducers: MetaReducer[] = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -31,7 +37,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    DatePipe
+    DatePipe,
+    StoreModule.forRoot({ auth: authReducer }, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

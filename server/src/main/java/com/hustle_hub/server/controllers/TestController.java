@@ -2,6 +2,7 @@ package com.hustle_hub.server.controllers;
 
 import com.hustle_hub.server.payloads.ApiResponseObject;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,4 +14,11 @@ public class TestController {
     public ApiResponseObject test(){
         return new ApiResponseObject("THe API is running fine",true,null);
     }
+
+    @PostMapping("/test")
+    public ApiResponseObject testPost(){
+        return new ApiResponseObject("THe API is running fine",true,null);
+    }
+
+
 }

@@ -15,4 +15,6 @@ public class CategoryDto {
     private String name;
     private String color;
     private List<TaskDto> tasks = new ArrayList<>();
+ 
+
 }

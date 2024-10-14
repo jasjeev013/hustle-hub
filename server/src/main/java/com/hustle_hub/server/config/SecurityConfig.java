@@ -55,14 +55,14 @@ public class SecurityConfig {
 //                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
 
                 .csrf(csrfConfig -> csrfConfig.csrfTokenRequestHandler(csrfTokenRequestAttributeHandler)
-                        .ignoringRequestMatchers( "/swagger-ui/**", "/v3/api-docs/**","/api/user/create","/api/user/apiLogin")
+                        .ignoringRequestMatchers( "/swagger-ui/**", "/v3/api-docs/**","/api/user/create","/test","/api/user/apiLogin")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
 
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new JWTTokenGenerationFilter(), BasicAuthenticationFilter.class)
                 .addFilterBefore(new JWTTokenValidationFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**","/api/user/create","/api/user/apiLogin").permitAll()
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**","/api/user/create","/api/user/apiLogin","/test").permitAll()
                 .requestMatchers("/api/**").hasAuthority("USER")
         );
         http.formLogin(Customizer.withDefaults());

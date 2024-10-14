@@ -41,16 +41,17 @@ export class UserService {
     });
   }
 
-  getUser(emailId: string): Observable<any> {
+  getUser(emailId: String): Observable<any> {
     const token = localStorage.getItem('token'); 
-    console.log(token)
     const headers = new HttpHeaders({
        'Content-Type': 'application/json',
       'Authorization': `${token}`, 
     });
 
     const url = `${this.apiUrl}/user/get/email/${emailId}`;
-    console.log(url);
-    return this.http.get(url, { headers });
+    return this.http.get(url, { headers,
+      withCredentials: true
+    
+     });
   }
 }

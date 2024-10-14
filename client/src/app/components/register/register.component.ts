@@ -16,11 +16,9 @@ export class RegisterComponent {
   userRegisterDetails: UserRegisterDetails = new UserRegisterDetails();
 
   register(){
-    console.log(this.userRegisterDetails);
     this.userService.registerUser(this.userRegisterDetails).subscribe(
       (response: ApiResponseObject) => {
         if (response.result) {
-          console.log(response.object)
           this.router.navigate(['login']);
         } else {
           console.log('Login failed');

@@ -38,4 +38,57 @@
     margin-top: -6px;
     margin-bottom: -2px;
   }
-  
+
+  /* Modal background blur */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+}
+
+/* Modal content styling */
+.modal-content {
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Soft shadow */
+  transform: scale(0);  /* Initial scale for transition effect */
+  transition: all 0.3s ease-in-out;  /* Smooth transition */
+}
+
+/* When the modal is open, scale it up to 1 (pop-up effect) */
+.modal.show .modal-content {
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Modal header styling */
+.modal-header {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Modal footer styling */
+.modal-footer {
+  border-top: 1px solid #ddd;
+}
+
+/* Modal close button style */
+.btn-close {
+  outline: none;
+}
+
+/* Style the modal background */
+.modal.fade .modal-dialog {
+  transform: translateY(-50px); /* Initial position */
+  transition: transform 0.3s ease-out; /* Transition for sliding effect */
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0); /* Final position (slide to the center) */
+}
+
+/* Overlay style for smooth fade effect */
+.modal.fade {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+  opacity: 1;
+}

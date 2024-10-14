@@ -66,3 +66,13 @@ export interface ApiResponseData {
     result:Boolean,
     data: Array<any>
 }
+
+export class createCategory{
+    name: String;
+    color: String;
+
+    constructor() {
+        this.name = '';
+        this.color = '';
+    }
+}
