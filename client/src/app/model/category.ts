@@ -3,6 +3,7 @@ export interface Task {
     title: string;
     description: string;
     due_date: Date; // You can keep this as Date if you handle parsing appropriately
+    created_date: Date;
     priority: string;
     status: string;
     categories: Array<any>; // Adjust the type based on what you expect for categories
@@ -68,11 +69,29 @@ export interface ApiResponseData {
 }
 
 export class createCategory{
-    name: String;
-    color: String;
+    id:number
+    name: string;
+    color: string;
 
     constructor() {
+        this.id=0;
         this.name = '';
         this.color = '';
+    }
+}
+
+export class createTask{
+    title: String;
+    description: String;
+    due_date: Date;
+    priority: String;
+    status: String;
+    constructor() {
+        this.title = '';
+        this.description = '';
+        this.due_date = new Date();
+        this.priority = '';
+        this.status = '';
+
     }
 }

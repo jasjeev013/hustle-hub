@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 @SpringBootApplication
 @EnableWebSecurity
+//@EnableScheduling
 public class ServerApplication {
 
 	public static void main(String[] args) {

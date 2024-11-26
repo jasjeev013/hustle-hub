@@ -3,21 +3,19 @@ package com.hustle_hub.server.services.impl;
 import com.hustle_hub.server.exceptions.ResourceNotFoundException;
 import com.hustle_hub.server.models.Category;
 import com.hustle_hub.server.models.Task;
-import com.hustle_hub.server.models.User;
 import com.hustle_hub.server.payloads.ApiResponseData;
 import com.hustle_hub.server.payloads.ApiResponseObject;
 import com.hustle_hub.server.payloads.TaskDto;
 import com.hustle_hub.server.repositories.CategoryRepository;
 import com.hustle_hub.server.repositories.TaskRepository;
-import com.hustle_hub.server.repositories.UserRepository;
 import com.hustle_hub.server.services.TaskService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class TaskServiceImpl implements TaskService{
@@ -37,6 +35,7 @@ public class TaskServiceImpl implements TaskService{
         Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category", "id", categoryId));
         Task task = modelMapper.map(taskDto,Task.class);
         task.setCategory(category);
+        task.setCreated_date(LocalDate.now());
         Task savedTask = taskRepository.save(task);
         return new ApiResponseObject("Task Created Successfully",true,modelMapper.map(savedTask,TaskDto.class));
     }

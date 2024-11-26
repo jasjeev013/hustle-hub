@@ -15,7 +15,7 @@ public class TestController {
         return new ApiResponseObject("THe API is running fine",true,null);
     }
 
-    @PostMapping("/test")
+    @PostMapping("/")
     public ApiResponseObject testPost(){
         return new ApiResponseObject("THe API is running fine",true,null);
     }

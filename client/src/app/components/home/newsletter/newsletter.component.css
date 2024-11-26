@@ -1,0 +1,93 @@
+/* Container styles */
+.newsletter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212;
+    padding: 3rem;
+    width: 100vw; /* Full screen width */
+    min-height: 30vh; /* Adjust height if needed */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  .newsletter-container h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter-container p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #bbbbbb;
+  }
+  
+  /* Input and button container */
+  .input-container {
+    display: flex;
+    align-items: center;
+    width: 80%; /* Adjust width to control size relative to screen */
+    max-width: 600px; /* Add a max-width for larger screens */
+    border: 2px solid transparent;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #2a2a2a;
+    transition: 0.3s;
+  }
+  
+  .input-container:hover {
+    border-color: #ffffff;
+  }
+  
+  /* Input field styles */
+  .input-container input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .input-container input::placeholder {
+    color: #999999;
+    font-size: 0.9rem;
+  }
+  
+  /* Button styles */
+  .input-container button {
+    background-color: #ffffff;
+    color: #121212;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .input-container button:hover {
+    background-color: #ff6f61;
+    color: #ffffff;
+  }
+  
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+  }
+  
+  .input-container:focus-within {
+    animation: pulse 1.5s infinite;
+  }
+  

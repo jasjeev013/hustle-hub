@@ -1,0 +1,52 @@
+<div class="contact-container">
+    <h1>Contact us</h1>
+    <p>
+      We'd love to hear from you! Drop us a line below, and we'll do our best to
+      get back to you within one business day.
+    </p>
+    <form (ngSubmit)="submitForm()" #contactForm="ngForm" class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <input
+            type="text"
+            id="firstName"
+            placeholder="First name (required)"
+            [(ngModel)]="firstName"
+            name="firstName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            id="lastName"
+            placeholder="Last name (required)"
+            [(ngModel)]="lastName"
+            name="lastName"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          placeholder="Email (required)"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <textarea
+          id="message"
+          placeholder="Message"
+          [(ngModel)]="message"
+          name="message"
+          rows="4"
+        ></textarea>
+      </div>
+      <button type="submit" [disabled]="!contactForm.valid">Send</button>
+    </form>
+  </div>
+  

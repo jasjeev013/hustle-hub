@@ -1,1 +1,57 @@
-<p>profile works!</p>
+<div class="container mt-5">
+    <!-- User Info Section -->
+    <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded">
+      <!-- User Image & Greeting -->
+      <div class="d-flex align-items-center">
+        <div class="profile-photo-container me-3">
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="User Photo" class="profile-photo">
+        </div>
+        <div>
+          <h2 class="animate-fade">Hey, <span class="text-primary">{{ userName }}</span></h2>
+          <p class="animate-slide">{{ userDescription }}</p>
+        </div>
+      </div>
+      
+      <!-- Edit Button -->
+      <button class="btn btn-outline-primary btn-edit animate-grow">Edit</button>
+    </div>
+  
+    <!-- Card Box for Tasks and Categories -->
+    <div class="card mt-4 animate-slide-up">
+      <div class="card-body">
+        <h4 class="card-title text-center">Task Overview</h4>
+        <div class="row text-center mt-4">
+          <div class="col-md-4">
+            <h5 class="text-success">{{ categoriesCount }}</h5>
+            <p>Categories</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-info">{{ tasksCompletedCount }}</h5>
+            <p>Tasks Completed</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-danger">{{ tasksPendingCount }}</h5>
+            <p>Tasks Left</p>
+          </div>
+          <div class="col-md-4 my-4">
+            <h5 class="text-danger">10</h5>
+            <p>Daily Streak</p>
+          </div>
+          <div class="col-md-4 my-4">
+            <h5 class="text-danger">6</h5>
+            <p>Task Completion Streak</p>
+          </div>
+          <div class="col-md-4 my-4">
+            <h5 class="text-danger">4</h5>
+            <p>High Priority Task COmpletion</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Delete Account Button -->
+    <button class="btn btn-danger btn-delete animate-fade-in">
+      Delete Account
+    </button>
+  </div>
+  

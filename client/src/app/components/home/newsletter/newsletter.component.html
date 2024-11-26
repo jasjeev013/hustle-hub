@@ -1,0 +1,16 @@
+<div class="newsletter-container">
+    <h2>Don't miss out!</h2>
+    <p>Subscribe to our newsletter for cool tips, articles, and offers.</p>
+    <div class="input-container">
+      <input
+        type="email"
+        placeholder="Type your email..."
+        [(ngModel)]="email"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        required
+      />
+      <button (click)="subscribe()">Subscribe</button>
+    </div>
+  </div>
+  

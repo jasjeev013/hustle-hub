@@ -17,6 +17,8 @@ import { authReducer } from './auth/auth.reducer';
 import { MetaReducer, StoreModule } from '@ngrx/store';
 import { localStorageSyncReducer } from './auth/local-storage.metareducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
+import { ContactUsComponent } from './components/home/contact-us/contact-us.component';
  
 export const metaReducers: MetaReducer[] = [localStorageSyncReducer];
 
@@ -29,7 +31,9 @@ export const metaReducers: MetaReducer[] = [localStorageSyncReducer];
     DashboardComponent,
     ProfileComponent,
     SlidingCardComponent,
-    NavbarComponent
+    NavbarComponent,
+    NewsletterComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

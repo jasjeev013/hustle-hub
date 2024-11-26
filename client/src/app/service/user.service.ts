@@ -51,7 +51,6 @@ export class UserService {
     const url = `${this.apiUrl}/user/get/email/${emailId}`;
     return this.http.get(url, { headers,
       withCredentials: true
-    
      });
   }
 }

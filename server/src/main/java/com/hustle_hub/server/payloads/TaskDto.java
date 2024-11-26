@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -18,7 +18,8 @@ public class TaskDto {
     private Long id;
     private String title;
     private String description;
-    private Date due_date;
+    private LocalDate due_date;
+    private LocalDate created_date;
     private String priority;
     private String status;
     private List<String> categories = new ArrayList<>();

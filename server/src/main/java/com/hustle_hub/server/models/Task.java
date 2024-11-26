@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -18,7 +18,8 @@ public class Task {
     private long id;
     private String title;
     private String description;
-    private Date due_date;
+    private LocalDate created_date;
+    private LocalDate due_date;
     private String priority;
     private String status;
 
