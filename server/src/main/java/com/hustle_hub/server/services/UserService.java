@@ -16,6 +16,4 @@ public interface UserService {
 
     ApiResponseObject getUserByEmail(String emailId);
 
-
-
 }
