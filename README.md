@@ -142,8 +142,7 @@ GET /tasks
     "priority": "HIGH",
     "status": "IN_PROGRESS"
   }
-]
-```
+]```
 ### **Swagger UI**  
 `Access API docs interactively at http://localhost:8080/swagger-ui.html` 
 
