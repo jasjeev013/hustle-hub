@@ -1,6 +1,6 @@
 # **Hustle Hub: The Authentic Scheduler**  
 
-![Hustle Hub Banner](/path/to/banner.png) *(Replace with actual project banner)*  
+![Hustle Hub Banner](/images/hustleHub.png) *(Replace with actual project banner)*  
 
 **Hustle Hub** is a comprehensive **task management system** designed to help users efficiently manage their personal and professional tasks. It allows users to **create, organize, and track tasks** by setting priorities, due dates, and categories. With features like **user authentication, task categorization, status tracking, and in-app notifications**, Hustle Hub ensures a seamless experience for individuals and teams to stay **organized and productive**.  
 
@@ -94,16 +94,22 @@ Hustle-Hub/
 │   │   └── ...  
 │  
 └── data-modelling/    # Database Schema & ER Diagrams  
-    └── data_model.md  # Data modeling structure  
+    └── data_model.md  # Data modeling structure
+    └── images/   
 ```
 
 ---
 
 ## **📸 Screenshots**  
 
-### **Login Page**  
+### **Login Page**
+![Login Page](/images/loginPage.png)  
 ### **Task Dashboard**  
+![Task Dashboard](/images/taskDashboard.png)  
 ### **Task Creation Modal**  
+![Task Creation Modal](/images/newTask.png)  
+### **Profile Dashboard**  
+![Profile Sadhboard](/images/profileDashboard.png)  
 
 ---
 
@@ -111,29 +117,30 @@ Hustle-Hub/
 ### **ER Diagram**  
 
 *(Insert ER Diagram here)*  
+![ER Diagram](/images/er-diagram.png)  
 
 ---
 
 ## **📜 API Documentation**  
 
 ### **Base URL**  
-`http://localhost:8080/api/v1`  
+`[http://localhost:8080/](http://localhost:8080/)`  
 
 ### **Endpoints**  
 
 #### **Authentication**  
 | Method | Endpoint          | Description                |
 |--------|-------------------|----------------------------|
-| `POST` | `/auth/signup`    | Register a new user        |
-| `POST` | `/auth/login`     | Login with credentials     |
+| `POST` | `/api/user/create`    | Register a new user        |
+| `POST` | `/api/user/apiLogin`     | Login with credentials     |
 
 #### **Tasks**  
 | Method | Endpoint          | Description                    |
 |--------|-------------------|--------------------------------|
-| `GET`  | `/tasks`          | Get all tasks (requires auth)  |
-| `POST` | `/tasks`          | Create a new task              |
-| `PUT`  | `/tasks/{id}`     | Update a task                  |
-| `DELETE`| `/tasks/{id}`     | Delete a task                  |
+| `GET`  | `/api/task/all/{categoryId}`          | Get all tasks (requires auth)  |
+| `POST` | `/api/task/create/{categoryId}`          | Create a new task              |
+| `PUT`  | `/api/task/update/{categoryId}/{taskId}`     | Update a task                  |
+| `DELETE`| `/api/task/delete/{categoryId}/{taskId}`     | Delete a task                  |
 
 ### **Sample Request (Login)**  
 ```json
@@ -147,15 +154,13 @@ POST /auth/login
 ### **Sample Response (Get Tasks)**  
 ```json
 GET /tasks
-[
-  {
-    "id": 1,
-    "title": "Complete Project",
-    "dueDate": "2023-12-31",
-    "priority": "HIGH",
-    "status": "IN_PROGRESS"
-  }
-]
+{
+  "message": "string",
+  "result": true,
+  "data": [
+    {}
+  ]
+}
 ```
 
 ### **Swagger UI**  
@@ -173,28 +178,13 @@ GET /tasks
 
 ---
 
-## **📜 License**  
-
-*(Include License details here)*  
-
----
-
 ## **📧 Contact**  
 
 - **Email**: your.email@example.com  
-- **GitHub**: [@YourUsername](https://github.com/YourUsername)  
-- **LinkedIn**: [Your Profile](https://www.linkedin.com/in/your-profile)  
+- **GitHub**: [@jasjeev013](https://github.com/jasjeev013)  
+- **LinkedIn**: [Jasjeev Singh Kohli](https://www.linkedin.com/in/jasjeev-singh-k-773238247)  
 
 *(Replace placeholders with actual links/data. Remove sample APIs if not applicable.)*  
 
----
 
-### **Key Notes**  
-1. **Customize**:  
-   - Replace `http://localhost:8080` with your production API URL.  
-   - Add/remove endpoints as needed.  
-2. **Swagger**: If Swagger is configured, the link will auto-generate docs.  
-3. **Testing**: Include a Postman collection link if available.  
-
-Let me know if you'd like to add **authentication details** (e.g., JWT header format) or **environment variables**! 🚀
 
