@@ -1,6 +1,6 @@
 # **Hustle Hub: The Authentic Scheduler**  
 
-![Hustle Hub Banner](/images/hustleHub.png) *(Replace with actual project banner)*  
+![Hustle Hub Banner](/images/hustleHub.png) 
 
 **Hustle Hub** is a comprehensive **task management system** designed to help users efficiently manage their personal and professional tasks. It allows users to **create, organize, and track tasks** by setting priorities, due dates, and categories. With features like **user authentication, task categorization, status tracking, and in-app notifications**, Hustle Hub ensures a seamless experience for individuals and teams to stay **organized and productive**.  
 
@@ -14,9 +14,8 @@
 5. [Screenshots](#-screenshots)  
 6. [Data Modeling](#-data-modeling)  
 7. [API Documentation](#-api-documentation)  
-8. [Contributing](#-contributing)  
-9. [License](#-license)  
-10. [Contact](#-contact)  
+8. [Contributing](#-contributing)   
+9. [Contact](#-contact)  
 
 ---
 
@@ -115,8 +114,6 @@ Hustle-Hub/
 
 ## **🗄 Data Modeling**  
 ### **ER Diagram**  
-
-*(Insert ER Diagram here)*  
 ![ER Diagram](/images/er-diagram.png)  
 
 ---
@@ -144,7 +141,7 @@ Hustle-Hub/
 
 ### **Sample Request (Login)**  
 ```json
-POST /auth/login
+POST /api/user/create
 {
   "email": "user@example.com",
   "password": "yourpassword"
@@ -153,7 +150,7 @@ POST /auth/login
 
 ### **Sample Response (Get Tasks)**  
 ```json
-GET /tasks
+GET /api/task/all/{categoryId}
 {
   "message": "string",
   "result": true,
@@ -180,11 +177,9 @@ GET /tasks
 
 ## **📧 Contact**  
 
-- **Email**: your.email@example.com  
+- **Email**: jasjeev99@gmail.com
 - **GitHub**: [@jasjeev013](https://github.com/jasjeev013)  
 - **LinkedIn**: [Jasjeev Singh Kohli](https://www.linkedin.com/in/jasjeev-singh-k-773238247)  
-
-*(Replace placeholders with actual links/data. Remove sample APIs if not applicable.)*  
 
 
 
