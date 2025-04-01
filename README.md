@@ -16,13 +16,14 @@
 7. [API Documentation](#-api-documentation)  
 8. [Contributing](#-contributing)  
 9. [License](#-license)  
+10. [Contact](#-contact)  
 
 ---
 
 ## **✨ Features**  
 ✅ **User Authentication** – Secure login/signup using JWT.  
 ✅ **Task Management** – Create, edit, delete, and categorize tasks.  
-✅ **Priority & Due Dates** – Set task priorities (High/Medium/Low) and deadlines.  
+✅ **Priority & Due Dates** – Set task priorities (*High, Medium, Low*) and deadlines.  
 ✅ **Status Tracking** – Mark tasks as *Pending, In Progress, or Completed*.  
 ✅ **Notifications** – In-app alerts for upcoming deadlines.  
 ✅ **Responsive UI** – Works smoothly on desktop and mobile.  
@@ -52,16 +53,16 @@
 ## **⚙ Installation & Setup**  
 
 ### **Prerequisites**  
-- Node.js & npm (for Angular)  
-- Java JDK 11+ (for Spring Boot)  
-- PostgreSQL (Database)  
+- **Node.js & npm** (for Angular)  
+- **Java JDK 11+** (for Spring Boot)  
+- **PostgreSQL** (Database)  
 
 ### **Steps to Run**  
 
 #### **1. Backend (Spring Boot)**  
 ```bash
 cd server  
-mvn spring-boot:run  # Starts the backend on http://localhost:8080 
+mvn spring-boot:run  # Starts the backend on http://localhost:8080
 ```
 
 #### **2. Frontend (Angular)**  
@@ -70,6 +71,8 @@ cd client
 npm install          # Install dependencies  
 ng serve             # Runs the frontend on http://localhost:4200  
 ```
+
+---
 
 ## **📂 Folder Structure**  
 
@@ -92,8 +95,9 @@ Hustle-Hub/
 │  
 └── data-modelling/    # Database Schema & ER Diagrams  
     └── data_model.md  # Data modeling structure  
-
 ```
+
+---
 
 ## **📸 Screenshots**  
 
@@ -101,8 +105,15 @@ Hustle-Hub/
 ### **Task Dashboard**  
 ### **Task Creation Modal**  
 
+---
+
 ## **🗄 Data Modeling**  
-### **ER Diagram** 
+### **ER Diagram**  
+
+*(Insert ER Diagram here)*  
+
+---
+
 ## **📜 API Documentation**  
 
 ### **Base URL**  
@@ -117,12 +128,12 @@ Hustle-Hub/
 | `POST` | `/auth/login`     | Login with credentials     |
 
 #### **Tasks**  
-| Method | Endpoint          | Description                |
-|--------|-------------------|----------------------------|
-| `GET`  | `/tasks`          | Get all tasks (requires auth) |
-| `POST` | `/tasks`          | Create a new task          |
-| `PUT`  | `/tasks/{id}`     | Update a task              |
-| `DELETE`| `/tasks/{id}`     | Delete a task              |
+| Method | Endpoint          | Description                    |
+|--------|-------------------|--------------------------------|
+| `GET`  | `/tasks`          | Get all tasks (requires auth)  |
+| `POST` | `/tasks`          | Create a new task              |
+| `PUT`  | `/tasks/{id}`     | Update a task                  |
+| `DELETE`| `/tasks/{id}`     | Delete a task                  |
 
 ### **Sample Request (Login)**  
 ```json
@@ -130,9 +141,11 @@ POST /auth/login
 {
   "email": "user@example.com",
   "password": "yourpassword"
-}```
+}
+```
 
-```json 
+### **Sample Response (Get Tasks)**  
+```json
 GET /tasks
 [
   {
@@ -142,28 +155,41 @@ GET /tasks
     "priority": "HIGH",
     "status": "IN_PROGRESS"
   }
-]```
+]
+```
+
 ### **Swagger UI**  
-`Access API docs interactively at http://localhost:8080/swagger-ui.html` 
+`Access API docs interactively at http://localhost:8080/swagger-ui.html`  
+
+---
 
 ## **🤝 Contributing**  
 
-- Fork the repository. 
-- Create a branch (git checkout -b feature/your-feature).
-- Commit changes (git commit -m "Add your feature").
-- Push to the branch (git push origin feature/your-feature).
-- Open a Pull Request.
+1. **Fork** the repository.  
+2. **Create a branch** (`git checkout -b feature/your-feature`).  
+3. **Commit changes** (`git commit -m "Add your feature"`).  
+4. **Push to the branch** (`git push origin feature/your-feature`).  
+5. **Open a Pull Request**.  
 
-## **📜 License** 
-## **📧 Contact** 
+---
 
-- Email: your.email@example.com
-- GitHub: @YourUsername
-- LinkedIn: Your Profile
-(Replace placeholders with actual links/data. Remove sample APIs if not applicable.)
+## **📜 License**  
 
+*(Include License details here)*  
 
-### **Key Notes**:
+---
+
+## **📧 Contact**  
+
+- **Email**: your.email@example.com  
+- **GitHub**: [@YourUsername](https://github.com/YourUsername)  
+- **LinkedIn**: [Your Profile](https://www.linkedin.com/in/your-profile)  
+
+*(Replace placeholders with actual links/data. Remove sample APIs if not applicable.)*  
+
+---
+
+### **Key Notes**  
 1. **Customize**:  
    - Replace `http://localhost:8080` with your production API URL.  
    - Add/remove endpoints as needed.  
@@ -171,8 +197,4 @@ GET /tasks
 3. **Testing**: Include a Postman collection link if available.  
 
 Let me know if you'd like to add **authentication details** (e.g., JWT header format) or **environment variables**! 🚀
-
-
-
-
 
